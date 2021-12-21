@@ -1,0 +1,25 @@
+CREATE TABLE PRODUCT (
+Product_id VARCHAR2(20) CONSTRAINT pk_product PRIMARY KEY,
+product_Name VARCHAR2(20) CONSTRAINT not_null_product NOT NULL,
+price NUMBER CONSTRAINT P_price CHECK (price>0)
+);
+
+CREATE TABLE CUSTOMER (
+Customer_id VARCHAR2(20) CONSTRAINT pk_customor PRIMARY KEY,
+customor_Name VARCHAR2(20) CONSTRAINT pk_name NOT NULL,
+customor_Tel NUMBER
+);
+
+CREATE TABLE ORDERS (
+Customer_id VARCHAR2(20),
+Product_id VARCHAR2(20),
+Quantity NUMBER,
+Total_amount NUMBER,
+CONSTRAINT fk1 FOREIGN KEY (Product_id) REFERENCES
+Product(Product_id));
+CONSTRAINT fk2 FOREIGN KEY (Customer_id) REFERENCES
+Customer(Customer_id));
+
+ALTER TABLE PRODUCT ADD Category VARCHAR2(20)
+
+ALTER TABLE ORDERS ADD OrderDate Date(SYSDATE)
